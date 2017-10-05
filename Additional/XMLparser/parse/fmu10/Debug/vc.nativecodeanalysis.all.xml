@@ -1,0 +1,1847 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+      <FILENAME>parse.c</FILENAME>
+      <LINE>113</LINE>
+      <COLUMN>32</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'XMLparsed-&gt;pRecRealVar'. </DESCRIPTION>
+    <FUNCTION>XMLParse</FUNCTION>
+    <DECORATED>XMLParse</DECORATED>
+    <FUNCLINE>45</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>47</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>48</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>49</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>50</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>51</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>52</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>56</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>58</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>24</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecRealVar' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>80</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'vars[k]')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>91</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>95</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>97</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>104</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>107</LINE>
+        <COLUMN>25</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>111</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'sv-&gt;typeSpec-&gt;type' ) resolves to case elm_Real: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>112</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>113</LINE>
+        <COLUMN>32</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecRealVar' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+      <FILENAME>parse.c</FILENAME>
+      <LINE>117</LINE>
+      <COLUMN>31</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'XMLparsed-&gt;pRecIntVar'. </DESCRIPTION>
+    <FUNCTION>XMLParse</FUNCTION>
+    <DECORATED>XMLParse</DECORATED>
+    <FUNCLINE>45</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>47</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>48</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>49</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>50</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>51</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>52</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>56</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>58</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>67</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>80</LINE>
+        <COLUMN>24</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecIntVar' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'vars[k]')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>91</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>95</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>97</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>104</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>107</LINE>
+        <COLUMN>25</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>111</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'sv-&gt;typeSpec-&gt;type' ) resolves to case elm_Integer: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>116</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>117</LINE>
+        <COLUMN>31</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecIntVar' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+      <FILENAME>parse.c</FILENAME>
+      <LINE>121</LINE>
+      <COLUMN>32</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'XMLparsed-&gt;pRecBoolVar'. </DESCRIPTION>
+    <FUNCTION>XMLParse</FUNCTION>
+    <DECORATED>XMLParse</DECORATED>
+    <FUNCLINE>45</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>47</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>48</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>49</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>50</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>51</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>52</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>56</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>58</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>70</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>71</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>80</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>24</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecBoolVar' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'vars[k]')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>91</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>95</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>97</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>104</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>107</LINE>
+        <COLUMN>25</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>111</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'sv-&gt;typeSpec-&gt;type' ) resolves to case elm_Boolean: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>120</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>121</LINE>
+        <COLUMN>32</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecBoolVar' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+      <FILENAME>parse.c</FILENAME>
+      <LINE>125</LINE>
+      <COLUMN>34</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'XMLparsed-&gt;pRecStringVar'. </DESCRIPTION>
+    <FUNCTION>XMLParse</FUNCTION>
+    <DECORATED>XMLParse</DECORATED>
+    <FUNCLINE>45</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>47</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>48</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>49</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>50</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>51</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>52</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>56</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>58</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>73</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>80</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>26</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecStringVar' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'vars[k]')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>91</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>95</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>97</LINE>
+        <COLUMN>23</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>104</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>107</LINE>
+        <COLUMN>25</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>111</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'sv-&gt;typeSpec-&gt;type' ) resolves to case elm_String: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>124</LINE>
+        <COLUMN>3</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\model_exchange\fmusim_me\</FILEPATH>
+        <FILENAME>parse.c</FILENAME>
+        <LINE>125</LINE>
+        <COLUMN>34</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'XMLparsed-&gt;pRecStringVar' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>stack.c</FILENAME>
+      <LINE>18</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 's'. </DESCRIPTION>
+    <FUNCTION>stackNew</FUNCTION>
+    <DECORATED>stackNew</DECORATED>
+    <FUNCLINE>16</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>17</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'s' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>18</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'s' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>stack.c</FILENAME>
+      <LINE>36</LINE>
+      <COLUMN>35</COLUMN>
+    </SFA>
+    <DEFECTCODE>6308</DEFECTCODE>
+    <DESCRIPTION>'realloc' might return null pointer: assigning null pointer to 's-&gt;stack', which is passed as an argument to 'realloc', will cause the original memory block to be leaked.</DESCRIPTION>
+    <FUNCTION>stackPush</FUNCTION>
+    <DECORATED>stackPush</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
+    <PATH />
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>stack.c</FILENAME>
+      <LINE>66</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6386</DEFECTCODE>
+    <DESCRIPTION>Buffer overrun while writing to 'array':  the writable size is '((n+1))*sizeof(void *)' bytes, but 'n' bytes might be written.</DESCRIPTION>
+    <FUNCTION>stackLastPopedAsArray0</FUNCTION>
+    <DECORATED>stackLastPopedAsArray0</DECORATED>
+    <FUNCLINE>59</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>61</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'array' is a 0 byte array</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!array' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>63</LINE>
+        <COLUMN>15</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'n' may equal 1</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Invalid write to 'array', (outside its writable range)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>stack.c</FILENAME>
+      <LINE>78</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6386</DEFECTCODE>
+    <DESCRIPTION>Buffer overrun while writing to 'array':  the writable size is '((s-&gt;stackPos+1))*sizeof(void *)' bytes, but '8' bytes might be written.</DESCRIPTION>
+    <FUNCTION>stackPopAllAsArray</FUNCTION>
+    <DECORATED>stackPopAllAsArray</DECORATED>
+    <FUNCLINE>72</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>73</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'array' is a 0 byte array</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!array' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>15</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;*size')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>78</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>24</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'i' may equal 1</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>15</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Continue this loop, (assume 'i&lt;*size')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>stack.c</FILENAME>
+        <LINE>78</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Invalid write to 'array', (outside its writable range)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>443</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'att'. </DESCRIPTION>
+    <FUNCTION>addAttributes</FUNCTION>
+    <DECORATED>addAttributes</DECORATED>
+    <FUNCLINE>422</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>423</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>424</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>425</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>426</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>426</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>426</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>426</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>427</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>428</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'att' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>429</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'att' is an In/Out argument to 'checkPointer' (declared on line 320)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>429</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!checkPointer(att)' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>431</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>431</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'attr[n]')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>432</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>433</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!checkPointer(value)' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>437</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>438</LINE>
+        <COLUMN>14</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'a==att_BAD_DEFINED' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>443</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'att' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>455</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'e'. </DESCRIPTION>
+    <FUNCTION>newElement</FUNCTION>
+    <DECORATED>newElement</DECORATED>
+    <FUNCLINE>452</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>453</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'e' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>454</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'e' is an In/Out argument to 'checkPointer' (declared on line 320)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>454</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!checkPointer(e)' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>455</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'e' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>720</LINE>
+      <COLUMN>30</COLUMN>
+    </SFA>
+    <DEFECTCODE>6308</DEFECTCODE>
+    <DESCRIPTION>'realloc' might return null pointer: assigning null pointer to 'data', which is passed as an argument to 'realloc', will cause the original memory block to be leaked.</DESCRIPTION>
+    <FUNCTION>handleData</FUNCTION>
+    <DECORATED>handleData</DECORATED>
+    <FUNCLINE>704</FUNCLINE>
+    <PATH />
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>721</LINE>
+      <COLUMN>15</COLUMN>
+    </SFA>
+    <DEFECTCODE>28183</DEFECTCODE>
+    <DESCRIPTION>'data' could be '0', and is a copy of the value found in 'realloc()`720':  this does not adhere to the specification for the function 'strncat'. </DESCRIPTION>
+    <FUNCTION>handleData</FUNCTION>
+    <DECORATED>handleData</DECORATED>
+    <FUNCLINE>704</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>705</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>706</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>707</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>719</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>720</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>721</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>722</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>28182</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer. 'data' contains the same NULL value as 'realloc()`720' did. See line 721 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>handleData</FUNCTION>
+    <DECORATED>handleData</DECORATED>
+    <FUNCLINE>704</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>705</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>706</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>707</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>719</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>720</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'data' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>721</LINE>
+        <COLUMN>15</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'data' is an In/Out argument to 'strncat' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h:255)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>722</LINE>
+        <COLUMN>16</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'data' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>713</LINE>
+      <COLUMN>19</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'data' could be '0':  this does not adhere to the specification for the function 'strncpy'. </DESCRIPTION>
+    <FUNCTION>handleData</FUNCTION>
+    <DECORATED>handleData</DECORATED>
+    <FUNCLINE>704</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>705</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>706</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>707</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>709</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>712</LINE>
+        <COLUMN>17</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'data' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>713</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'data' is an In/Out argument to 'strncpy' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h:346)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILENAME>xml_parser.c</FILENAME>
+        <LINE>713</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'data' should not be NULL, because this is not consistent with the SAL annotation on 'strncpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILENAME>xml_parser.c</FILENAME>
+      <LINE>900</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned long' passed as _Param_(3) when some signed type is required in call to 'printf'.</DESCRIPTION>
+    <FUNCTION>parse</FUNCTION>
+    <DECORATED>parse</DECORATED>
+    <FUNCLINE>879</FUNCLINE>
+    <PATH />
+  </DEFECT></DEFECTS>

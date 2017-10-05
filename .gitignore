@@ -1,0 +1,7 @@
+*~*
+*.res
+*.local
+*.identcache
+*.stat
+*mgr.*
+*prt.*

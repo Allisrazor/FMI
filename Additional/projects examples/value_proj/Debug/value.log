@@ -1,0 +1,28 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (value.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  values.c
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(73): warning C4018: '>=': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(135): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(136): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(231): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(252): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(273): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(294): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(315): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(284): warning C4101: 'n': unreferenced local variable
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(331): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(351): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(370): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(389): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(650): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(700): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(719): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(740): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(755): warning C4018: '<': signed/unsigned mismatch
+e:\simintech\tasks\8_fmi\егор\29.09\value_proj\fmuTemplate.c(766): warning C4101: 'i': unreferenced local variable
+     Creating library ..\values\binaries\win32\values.lib and object ..\values\binaries\win32\values.exp
+  value.vcxproj -> e:\SimInTech\tasks\8_FMI\Егор\29.09\value_proj\..\values\binaries\win32\values.dll
+  value.vcxproj -> ..\values\binaries\win32\values.pdb (Full PDB)
