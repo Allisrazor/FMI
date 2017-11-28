@@ -75,17 +75,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\Для Работы\parse\fmu10\src\shared;E:\Для Работы\parse\fmu10\src\model_exchange\include;E:\Для Работы\parse\fmu10\src\model_exchange\fmusim_me;$(IncludePath)</IncludePath>
+    <IncludePath>src\shared;src\model_exchange\include;src\model_exchange\fmusim_me;$(IncludePath)</IncludePath>
     <CodeAnalysisRuleSet>E:\Visual Studio\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <GenerateManifest>false</GenerateManifest>
     <ExcludePath />
-    <OutDir>..\..\..\SimInTech\bin</OutDir>
+    <OutDir>..\..\..\..\..\..\..\bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>E:\Для Работы\parse\fmu10 - копия\src\shared;E:\Для Работы\parse\fmu10 - копия\src\model_exchange\include;E:\Для Работы\parse\fmu10 - копия\src\model_exchange\fmusim_me;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Для Работы\parse\fmu10 - копия\src\shared;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\..\..\..\..\..\bin</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\..\..\..\..\bin</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\..\..\..\..\bin</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -100,7 +107,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>libexpatMT.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\Для Работы\parse\fmu10 - копия\src\shared;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>src\shared;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>

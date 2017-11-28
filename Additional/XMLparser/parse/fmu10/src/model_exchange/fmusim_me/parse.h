@@ -21,7 +21,16 @@ typedef enum {
 	None
 } TInputFlag;                  //‘лаг, который показывает €вл€етс€ ли переменна€ входом/выходом или нет
 
+typedef enum {
+	Real,
+	Int,
+	Bool,
+	Str
+} TVarTypeFlag;                //‘лаг, который показывает тип переменной
+
 typedef struct {               //“ип, в котором описываетс€ переменна€ типа fmiReal
+	TVarTypeFlag VarType;
+    fmiValueReference ValueRef;
 	fmiBoolean IsParameter;
 	const char* Name;
 	TInputFlag InputFlag;                    
@@ -32,17 +41,9 @@ typedef struct {
 	const char* ModelGUID;       //GUID
 	int nx;                      //NumberOfStates
 	int nz;                      //NumberOfEventIndicators
-	int nr;                      // оличество описаний вещественных переменных
-	int ni;                      // оличество описаний вещественных переменных
-	int nb;                      // оличество описаний вещественных переменных
-	int ns;                      // оличество описаний вещественных переменных
-	TRecVar* pRecRealVar;        //ћассив описаний переменных типа fmiReal
-	TRecVar* pRecIntVar;         //ћассив описаний переменных типа fmiInteger
-	TRecVar* pRecBoolVar;       //ћассив описаний переменных типа fmiBoolean
-	TRecVar* pRecStringVar;      //ћассив описаний переменных типа fmiString
+	int nv;                      // оличество описаний переменных
+	TRecVar* pRecVar;            //”казатель на массив описаний переменных 
 } XMLInfo;
 
 DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath);
-DllExport void FreeM(void * ptrmem);
-
 
