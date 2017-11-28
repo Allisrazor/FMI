@@ -52,45 +52,22 @@ DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath)
 	XMLparsed->nz = getNumberOfEventIndicators(md);
 
 	int k = 0;
-	XMLparsed->nr = 0;
-	XMLparsed->ni = 0;
-	XMLparsed->nb = 0;
-	XMLparsed->ns = 0;
+	XMLparsed->nv = 0;
 
-	//Вычисление количества переменных (сколько вещественных, целых, булевских, строковых)
+	//Вычисление количества переменных
 	for (k = 0; vars[k]; k++) {
-		ScalarVariable* sv = vars[k];
-		switch (sv->typeSpec->type) {
-			case elm_Real:
-				XMLparsed->nr = XMLparsed->nr + 1;
-				break;
-			case elm_Integer:
-				XMLparsed->ni = XMLparsed->ni + 1;
-				break;
-			case elm_Boolean:
-				XMLparsed->nb = XMLparsed->nb + 1;
-				break;
-			case elm_String:
-				XMLparsed->ns = XMLparsed->ns + 1;
-		}
+		XMLparsed->nv = XMLparsed->nv + 1;
 	} //for
 
 	//Выделенеие памяти под массивы
-	XMLparsed->pRecRealVar = (TRecVar*)calloc(XMLparsed->nr,sizeof(TRecVar));
-	XMLparsed->pRecIntVar  = (TRecVar*)calloc(XMLparsed->ni, sizeof(TRecVar));
-	XMLparsed->pRecBoolVar = (TRecVar*)calloc(XMLparsed->nb, sizeof(TRecVar));
-	XMLparsed->pRecStringVar = (TRecVar*)calloc(XMLparsed->ns, sizeof(TRecVar));
+	XMLparsed->pRecVar = (TRecVar*)calloc(XMLparsed->nv,sizeof(TRecVar));
 
 	//Задание массива описаний переменных модели
-	int r = 0;
-	int i = 0;
-	int b = 0;
-	int s = 0;
 
 	for (k = 0; vars[k]; k++) {
 		ScalarVariable* sv = vars[k];
 		
-		TRecVar SetVar = { "" , None, fmiFalse };
+		TRecVar SetVar = { Real, 0, "" , None, fmiFalse };
 
 		SetVar.Name = getName(sv);                               //Получение имени переменной
 
@@ -108,27 +85,23 @@ DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath)
 			SetVar.IsParameter = fmiTrue;
 		}
 
-		switch (sv->typeSpec->type) {
+		SetVar.ValueRef = getValueReference(sv);                 //Получение ссылки на переменнную
+
+		switch (sv->typeSpec->type) {                            //Получение типа переменной
 			case elm_Real:
-				(XMLparsed->pRecRealVar[r]) = SetVar;
-				r = r + 1;
+				SetVar.VarType = Real;
 				break;
 			case elm_Integer:
-				(XMLparsed->pRecIntVar[i]) = SetVar;
-				i = i + 1;
+				SetVar.VarType = Int;
 				break;
 			case elm_Boolean:
-				(XMLparsed->pRecBoolVar[b]) = SetVar;
-				b = b + 1;
+				SetVar.VarType = Bool;
 				break;
 			case elm_String:
-				(XMLparsed->pRecStringVar[s]) = SetVar;
-				s = s + 1;
+				SetVar.VarType = Str;
+				break;
 		}
+		(XMLparsed->pRecVar[k]) = SetVar;
 	} //for
 }
 
-DllExport void FreeM(void* ptrmem)
-{
-	free(ptrmem);
-}
