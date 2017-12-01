@@ -577,7 +577,7 @@ begin
 
     //ѕроверка наступлени€ событи€ по времени
     FMU.TimeEvent := FMU.eventInfo.upcomingTimeEvent and (FMU.eventInfo.nextEventTime < at);
-    if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
+    //if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
 
     //”становка значений переменных модели на шаге интегрировани€
     Setlength(FMU.x,(FMU.nx+1));
@@ -652,7 +652,11 @@ begin
     if (FMU.nz > 0) then
     begin
       FMU.StateEvent := False;
-      FMU.StateEvent := (FMU.StateEvent or ((FMU.z[0]*FMU.pre_z[0]) < 0));
+      for i := 0 to (FMU.nz - 1) do
+      begin
+        FMU.StateEvent := (FMU.StateEvent or ((FMU.z[i]*FMU.pre_z[i]) < 0));
+        if FMU.StateEvent then break;
+      end;
       if FMU.StateEvent then
       begin
         FMU.StateEvent := not FMU.StateEvent;
