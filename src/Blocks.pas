@@ -336,7 +336,7 @@ begin
     FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\' + FMUfunc.fmu_name + '.dll'));
   end else
   begin
-    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\win32\' + FMUfunc.fmu_name + '.dll'));
+    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\' + WinVersion + '\' + FMUfunc.fmu_name + '.dll'));
   end;
   if (FMU.dll_Handle >= 32) then
   begin
@@ -725,6 +725,7 @@ begin
   FMU.fmuFlag := FMUfunc.fmiTerminate(FMU.model_instance);
   if (FMU.fmuFlag = fmiOk) then ErrorEvent(txt_FMUBlock_Terminate_Simulation, msInfo, VisualObject);
   FMUfunc.fmiFreeModelInstance(FMU.model_instance);
+  FreeLibrary(FMU.dll_Handle);
   //ErrorEvent(txt_FMUBlock_Free_Model, msInfo, VisualObject);
   Result := r_Success;
 end;  //Stop

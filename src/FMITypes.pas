@@ -4,6 +4,13 @@ interface
 
 uses Windows;
 
+const
+{$IFDEF WIN64}
+  WinVersion = 'win64';
+{$ELSE}
+  WinVersion = 'win32';
+{$ENDIF}
+
 type
   //Стандартные типы данных в fmiModelTypes
   fmiComponent = pointer;
@@ -14,6 +21,8 @@ type
   fmiString = pAnsiChar;
   fmiPBoolean = ^fmiBoolean; //указатель на fmiBoolean
   size_t = Cardinal;         //Стандартный тип из c++
+
+
 
   //Стандартные типы данных в fmiModelFunctions
   fmiStatus = (fmiOk, fmiWarning, fmiDiscard, fmiError, fmiFatal);

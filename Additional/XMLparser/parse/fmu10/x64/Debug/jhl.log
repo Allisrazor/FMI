@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  xml_parser.c
+  xmlVersionParser.c
+  stack.c
+  parse.c
+e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\model_exchange\fmusim_me\parse.c(70): warning C4047: 'initializing': 'fmiBoolean' differs in levels of indirection from 'char [1]'
+e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\model_exchange\fmusim_me\parse.c(70): warning C4047: 'initializing': 'const char *' differs in levels of indirection from 'int'
+  Generating Code...
+     Creating library ..\..\..\..\..\..\..\bin\parserXML.lib and object ..\..\..\..\..\..\..\bin\parserXML.exp
+  jhl.vcxproj -> E:\SimInTech(x64)\SimInTech64\Source\MBTY\FMI_LIB\Additional\XMLparser\parse\fmu10\..\..\..\..\..\..\..\bin\parserXML.dll
+  jhl.vcxproj -> ..\..\..\..\..\..\..\bin\parserXML.pdb (Partial PDB)
