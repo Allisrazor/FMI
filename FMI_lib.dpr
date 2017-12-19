@@ -16,6 +16,7 @@ uses
   Classes,
   Blocks in 'src\Blocks.pas',
   FMIfunc in 'src\FMIfunc.pas',
+  FMITypes in 'src\FMITypes.pas',
   Info in 'src\Info.pas',
   LibTexts in 'src\LibTexts.pas',
   parserXML in 'src\parserXML.pas',

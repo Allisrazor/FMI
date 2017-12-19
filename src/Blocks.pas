@@ -13,8 +13,8 @@ unit Blocks;
 
 interface
 
-uses Windows, Classes, MBTYArrays, DataTypes, SysUtils, RunObjts, SyncObjs, IntArrays,
-Math, LibTexts, FMIfunc, sevenzip, parserXML;
+uses Windows, Classes, MBTYArrays, DataTypes, DataObjts, SysUtils, RunObjts, SyncObjs, IntArrays,
+Math, LibTexts, FMITypes, FMIfunc, sevenzip, parserXML;
 
 type
 
@@ -30,11 +30,19 @@ type
     function       GetParamID(const ParamName:string; var DataType:TDataType; var IsConst: boolean):NativeInt; override;
     function       GetOutParamID(const ParamName:string;var DataType:TDataType;var IsConst: boolean):NativeInt;override;
     function       ReadParam(ID: NativeInt;ParamType:TDataType;DestData: Pointer;DestDataType: TDataType;MoveData:TMoveProc):boolean;override;
+    function       WriteParam(ID: NativeInt;Src: Pointer;SrcType: TDataType;destType: TDataType):boolean;override;
+    procedure      EditFunc(Props:TList;
+                            SetPortCount:TSetPortCount;
+                            SetCondPortCount:TSetCondPortCount;
+                            ExecutePropScript:TExecutePropScript
+                            );override;
   private
     // --- Задаваемые свойства блока ---
     FMUAdress: string;
-    InputCount: Integer;
-    OutputCount: Integer;
+    ParameterNames: string;
+    InputNames: string;
+    OutputNames: string;
+    PropCount: integer;
     PropName1: string;
     PropName2: string;
     PropName3: string;
@@ -49,6 +57,7 @@ type
     FMUfunc : TFMUfunc;
 
     // --- Внутренние свойства блока ---
+    function EditProp: int8;
     function Init: int8;
     function Start: int8;
     function Run(var at,h : RealType): int8;
@@ -72,6 +81,31 @@ begin
   inherited;
 end;
 
+procedure TFMUBlock.EditFunc;
+var
+Data : TEvalData;
+StringBuf : string;
+begin
+  inherited;
+  //Переписывается количество и имена входов
+  Data := TEvalData(FindVar(Props,'InputCount'));
+  if (Data <> nil) and not (StrToInt(Data.StrValue) = FMU.InputCount)  then
+  begin
+    SetPortCount(VisualObject,0);
+    Data.StrValue := IntToStr(FMU.InputCount);
+    ExecutePropScript(VisualObject,Data);
+  end;
+
+  //Переписывается количество и имена выходов
+  Data := TEvalData(FindVar(Props,'OutputCount'));
+  if (Data <> nil) and not (StrToInt(Data.StrValue) = FMU.OutputCount)  then
+  begin
+    Data.StrValue := IntToStr(FMU.OutputCount);
+    ExecutePropScript(VisualObject,Data);
+  end;
+
+end;
+
 function TFMUBlock.InfoFunc(Action: Integer):NativeInt;
 var
 i : integer;
@@ -79,7 +113,7 @@ begin
   Result:=0;
   case Action of
     i_GetInit: Result := r_Success;
-    //i_GetPropErr: Result := Init;
+    i_HaveSpetialEditor: Result := EditProp;
     i_GetCount: begin
       for i := 0 to (FMU.InputCount - 1) do 
       begin
@@ -127,13 +161,23 @@ begin
       DataType := dtFileName;
       Exit;
     end;
-    if StrEqu(ParamName,'InputCount') then begin
-      Result := NativeInt(@InputCount);
-      DataType := dtInteger;
+    if StrEqu(ParamName,'ParameterNames') then begin
+      Result := 22;
+      DataType := dtString;
       Exit;
     end;
-    if StrEqu(ParamName,'OutputCount') then begin
-      Result := NativeInt(@OutputCount);
+    if StrEqu(ParamName,'InputNames') then begin
+      Result := 23;
+      DataType := dtString;
+      Exit;
+    end;
+    if StrEqu(ParamName,'OutputNames') then begin
+      Result := 24;
+      DataType := dtString;
+      Exit;
+    end;
+    if StrEqu(ParamName,'PropCount') then begin
+      Result := NativeInt(@PropCount);
       DataType := dtInteger;
       Exit;
     end;
@@ -165,6 +209,32 @@ begin
   end;
 end; //GetParamID
 
+function TFMUBlock.WriteParam;
+begin
+  case ID of
+    22: begin
+         if SrcType = dtString then begin
+         if not (PString(src)^ = ParameterNames) then PString(src)^ := ParameterNames;
+           Result:=True;
+         end;
+       end;
+    23: begin
+         if SrcType = dtString then begin
+         if not (PString(src)^ = InputNames) then PString(src)^ := InputNames;
+           Result:=True;
+         end;
+       end;
+    24: begin
+         if SrcType = dtString then begin
+         if not (PString(src)^ = OutputNames) then PString(src)^ := OutputNames;
+           Result:=True;
+         end;
+       end;
+  else
+    Result:=inherited WriteParam(ID,Src,SrcType,destType);
+  end;
+end; //WriteParam
+
 function TFMUBlock.GetOutParamID(const ParamName:string; var DataType:TDataType; var IsConst: boolean):NativeInt;
 begin
   Result:=inherited GetOutParamID(ParamName, DataType, IsConst);
@@ -178,128 +248,73 @@ end;  //ReadParam
 { private }
 function TFMUBlock.Init: int8;
 var
-ArchNameBuffer, ArchExtBuffer : string;
+NameBuffer, DirBuffer : string;
 i : integer;
 p : TpRecVar;
 FileExistBool1, FileExistBool2 : boolean;
 begin
   Result := r_Success;
-  FMU.InputCount := 0;   //Инициализация количества входов
-  FMU.OutputCount := 0;   //Инициализация количества выходов
 
-  // Распаковывает файлы
-  if length (FMUAdress)>4 then
+  if not ((ExtractFileExt(FMUAdress) = '.dll') or (ExtractFileExt(FMUAdress) = '.fmu')) then
   begin
-    ArchExtBuffer := ExtractFileExt(FMUAdress);
-    //??? уберем с помощью .xml
-    ArchNameBuffer := ExtractFileName(FMUAdress);
-    setlength(ArchNameBuffer, (length(ArchNameBuffer)-4));
-    //??? уберем с помощью .xml
-  end;
+    ErrorEvent((txt_FMUBlock_ChoseRight_err), msError, VisualObject);
+    Result := r_Fail;
+    Exit;
+  end;  //if not (.dll or .fmu)
 
-  FileExistBool1 := FileExists(GetCurrentDir + '\' + ArchNameBuffer + '\' + ArchNameBuffer + '.dll');
-  FileExistBool2 := FileExists(GetCurrentDir + '\' + ArchNameBuffer + '\binaries\win32\' + ArchNameBuffer + '.dll');
-
-  if not (FileExistBool1 or FileExistBool2) then
+  if (ExtractFileExt(FMUAdress) = '.dll') then
   begin
-    if (ArchExtBuffer = '.fmu') and FileExists(FMUAdress) then
+    NameBuffer := ExtractFileName(FMUAdress);
+    setlength(NameBuffer, (length(NameBuffer)-4));
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
+      NameBuffer + '.dll') then
     begin
-      with CreateInArchive(CLSID_CFormatZip) do
-      begin
-        OpenFile(FMUAdress);
-        ExtractTo(GetCurrentDir + '\' + ArchNameBuffer);
-        Close;
-      end;
-    end else
-    begin
-      ErrorEvent(txt_FMUBlock_Archive_err, msError, VisualObject);
+      DirBuffer := GetCurrentDir + '\' + NameBuffer + '\binaries\win32\';
+      ErrorEvent((ExtractFileName(FMUAdress) + txt_FMUBlock_File_exists_err +
+        DirBuffer + '. ' + txt_FMUBlock_ChoseRight_err), msError, VisualObject);
       Result := r_Fail;
       Exit;
-    end;
-  end;
-
-  FMU.xmlPath := (GetCurrentDir + '\' + ArchNameBuffer + '\modelDescription.xml');
-  FMU.p_xmlPath := pansichar(FMU.xmlPath);
-  XMLParse(@FMU.XMLInfo, FMU.p_xmlPath);
-
-  //Запись данных о вещественных переменных
-  SetLength(FMU.RealArray, FMU.XMLInfo.RealArrayLen);
-  p := FMU.XMLInfo.RealArray;
-  for I := 0 to FMU.XMLInfo.RealArrayLen -1 do
+    end;  //if not FileExists(.dll)
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml') then
     begin
-      FMU.RealArray[i] := p;
-      if (FMU.RealArray[i]^.InputFlag = input) then inc(FMU.InputCount);
-      if (StrPas(FMU.RealArray[i]^.Name) = PropName1) then inc(FMU.OutputCount);
-      if (StrPas(FMU.RealArray[i]^.Name) = PropName2) then inc(FMU.OutputCount);
-      if (StrPas(FMU.RealArray[i]^.Name) = PropName3) then inc(FMU.OutputCount);
-      if (StrPas(FMU.RealArray[i]^.Name) = PropName4) then inc(FMU.OutputCount);
-      if (StrPas(FMU.RealArray[i]^.Name) = PropName5) then inc(FMU.OutputCount);
-      inc(p);
-    end;
+      DirBuffer := GetCurrentDir + '\' + NameBuffer + '\';
+      ErrorEvent(('modelDescription.xml' + txt_FMUBlock_File_exists_err +
+        DirBuffer + '. ' + txt_FMUBlock_ChoseRight_err), msError, VisualObject);
+      Result := r_Fail;
+      Exit;
+    end;  //if not FileExists(.xml)
+    FMUfunc.fmu_name := NameBuffer;
+  end;  //if (ExtractFileExt(FMUAdress) = '.dll')
 
-  //Запись данных о целых переменных
-  SetLength(FMU.IntArray, FMU.XMLInfo.IntArrayLen);
-  p := FMU.XMLInfo.IntArray;
-  for I := 0 to FMU.XMLInfo.IntArrayLen -1 do
-    begin
-      FMU.IntArray[i] := p;
-      if (FMU.IntArray[i]^.InputFlag = input) then inc(FMU.InputCount);
-      if (StrPas(FMU.IntArray[i]^.Name) = PropName1) then inc(FMU.OutputCount);
-      if (StrPas(FMU.IntArray[i]^.Name) = PropName2) then inc(FMU.OutputCount);
-      if (StrPas(FMU.IntArray[i]^.Name) = PropName3) then inc(FMU.OutputCount);
-      if (StrPas(FMU.IntArray[i]^.Name) = PropName4) then inc(FMU.OutputCount);
-      if (StrPas(FMU.IntArray[i]^.Name) = PropName5) then inc(FMU.OutputCount);
-      inc(p);
-    end;
-
-  //Запись данных о булевских переменных
-  SetLength(FMU.BoolArray, FMU.XMLInfo.BoolArrayLen);
-  p := FMU.XMLInfo.BoolArray;
-  for I := 0 to FMU.XMLInfo.BoolArrayLen -1 do
-    begin
-      FMU.BoolArray[i] := p;
-      if (FMU.BoolArray[i]^.InputFlag = input) then inc(FMU.InputCount);
-      if (StrPas(FMU.BoolArray[i]^.Name) = PropName1) then inc(FMU.OutputCount);
-      if (StrPas(FMU.BoolArray[i]^.Name) = PropName2) then inc(FMU.OutputCount);
-      if (StrPas(FMU.BoolArray[i]^.Name) = PropName3) then inc(FMU.OutputCount);
-      if (StrPas(FMU.BoolArray[i]^.Name) = PropName4) then inc(FMU.OutputCount);
-      if (StrPas(FMU.BoolArray[i]^.Name) = PropName5) then inc(FMU.OutputCount);
-      inc(p);
-    end;
-
-  //Запись данных о строковых переменных
-  SetLength(FMU.StringArray, FMU.XMLInfo.StringArrayLen);
-  p := FMU.XMLInfo.StringArray;
-  for I := 0 to FMU.XMLInfo.StringArrayLen -1 do
-    begin
-      FMU.StringArray[i] := p;
-      inc(p);
-    end;
-
-  //Проверка соответствия количества входов
-  if not (FMU.InputCount = InputCount) then
+  if (ExtractFileExt(FMUAdress) = '.fmu') then
   begin
-    ErrorEvent((txt_FMUBlock_InputCount_err + IntToStr(FMU.InputCount)),
-      msError, VisualObject);
+    if not FileExists(FMUAdress) then
+    begin
+      ErrorEvent((ExtractFileName(FMUAdress) + txt_FMUBlock_File_exists_err +
+        ExtractFilePath(FMUAdress) + '. ' + txt_FMUBlock_ChoseRight_err), msError, VisualObject);
+      Result := r_Fail;
+      Exit;
+    end;  //if not FileExists(FMUAdress)
+    NameBuffer := ExtractFileName(FMUAdress);
+    setlength(NameBuffer, (length(NameBuffer)-4));
+    FMUfunc.fmu_name := NameBuffer;
+  end;  //(ExtractFileExt(FMUAdress) = '.fmu')
+
+  if not (FMU.xmlPath = (GetCurrentDir + '\' + FMUfunc.fmu_name + '\modelDescription.xml')) then
+  begin
+    ErrorEvent(txt_FMUBlock_ChoseRight_err, msError, VisualObject);
     Result := r_Fail;
     Exit;
   end;
 
-  //Проверка соответствия количества выходов
-  if not (FMU.OutputCount = OutputCount) then
-  begin
-    ErrorEvent((txt_FMUBlock_OutputCount_err + ' Необходимо ' + IntToStr(FMU.OutputCount) + ' выходов, или верно указать имена переменных в Имя переменной выхода №'),
-      msError, VisualObject);
-    Result := r_Fail;
-    Exit;
-  end;
+  Result := r_Success;
+  FMU.IsStarted := false;
   
   //Инициализация параметров FMU
   FMU.loggingOn := fmiTrue;                      //fmiTrue, если необходимо ведения log
   FMU.nx := FMU.XMLInfo.NumberOfStates;          //Количество переменных состояний (для вычисления производных) - из .xml
   FMU.nz := FMU.XMLInfo.NumberOfEventIndicators; //Количество индикаторов события - из .xml
   FMU.Tstart := 0;                               //??? Начальное время интегрирования - из .xml, если там есть
-  FMU.Tend := 7;                                 //??? Конечное время интегрирования - из .xml, если там есть
   FMU.toleranceControlled := fmiFalse;
   FMU.p_inst_name := FMU.XMLInfo.ModelIdentifier;
   FMU.p_GUID := FMU.XMLInfo.GUID;
@@ -309,11 +324,6 @@ begin
   Setlength(FMU.pre_z,FMU.nz);
   for i := 0 to (FMU.nz - 1) do FMU.z[i] := 0;
 
-  //Созздание массива всех параметров модели
-  FMU.nr := 6;
-  SetLength(FMU.vr,(FMU.nr+1));
-  for i := 0 to FMU.nr - 1 do FMU.vr[i] := i;
-
 
   //Присвоение Callback функциям значений из Delphi
   FMU.CallbackFunctions.logger := CallbackLogger;
@@ -321,13 +331,12 @@ begin
   FMU.CallbackFunctions.freeMemory := freeM;
 
   //Инициализация функций FMU
-  FMUfunc.fmu_name := ArchNameBuffer;  //??? Из .xml файла
-  if FileExists(GetCurrentDir + '\' + ArchNameBuffer + '\' + ArchNameBuffer + '.dll') then
+  if FileExists(GetCurrentDir + '\' + FMUfunc.fmu_name + '\' + FMUfunc.fmu_name + '.dll') then
   begin
     FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\' + FMUfunc.fmu_name + '.dll'));
   end else
   begin
-    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\win32\' + FMUfunc.fmu_name + '.dll'));
+    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\' + WinVersion + '\' + FMUfunc.fmu_name + '.dll'));
   end;
   if (FMU.dll_Handle >= 32) then
   begin
@@ -436,17 +445,115 @@ end;  //Init
 
 function TFMUBlock.Start: int8;
 begin
-  ErrorEvent(txt_FMUBlock_Init, msInfo, VisualObject);
   Result := r_Success;
 end;  //Start
 
+function TFMUBlock.EditProp: int8;
+var
+NameBuffer, DirBuffer : string;
+i : integer;
+p : TpRecVar;
+FileExistBool1, FileExistBool2 : boolean;
+begin
+  Result := r_Success;
+
+  if not ((ExtractFileExt(FMUAdress) = '.dll') or (ExtractFileExt(FMUAdress) = '.fmu')) then
+  begin
+    Result := r_Fail;
+    Exit;
+  end;  //if not (.dll or .fmu)
+
+  if (ExtractFileExt(FMUAdress) = '.dll') then
+  begin
+    NameBuffer := ExtractFileName(FMUAdress);
+    setlength(NameBuffer, (length(NameBuffer)-4));
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
+      NameBuffer + '.dll') then
+    begin
+      Result := r_Fail;
+      Exit;
+    end;  //if not FileExists(.dll)
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml') then
+    begin
+      Result := r_Fail;
+      Exit;
+    end;  //if not FileExists(.xml)
+    FMUfunc.fmu_name := NameBuffer;
+  end;  //if (ExtractFileExt(FMUAdress) = '.dll')
+
+  if (ExtractFileExt(FMUAdress) = '.fmu') then
+  begin
+    if not FileExists(FMUAdress) then
+    begin
+      Result := r_Fail;
+      Exit;
+    end;  //if not FileExists(FMUAdress)
+    NameBuffer := ExtractFileName(FMUAdress);
+    setlength(NameBuffer, (length(NameBuffer)-4));
+    FileExistBool1 := FileExists(GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml');
+    FileExistBool2 := FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
+      NameBuffer + '.dll');
+    if not (FileExistBool1 and FileExistBool2) then
+    begin
+      with CreateInArchive(CLSID_CFormatZip) do
+      begin
+        OpenFile(FMUAdress);
+        ExtractTo(GetCurrentDir + '\' + NameBuffer);
+        Close;
+      end;
+    end;  //распаковка архива
+    FMUfunc.fmu_name := NameBuffer;
+  end;  //(ExtractFileExt(FMUAdress) = '.fmu')
+
+  if not (FMU.xmlPath = (GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml')) then
+  begin
+    FMU.xmlPath := (GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml');
+    FMU.p_xmlPath := pansichar(FMU.xmlPath);
+    XMLParse(@FMU.XMLInfo, FMU.p_xmlPath);
+
+    //Запись данных о переменных
+    SetLength(FMU.VarArray, FMU.XMLInfo.VarArrayLen);
+    p := FMU.XMLInfo.VarArray;
+    for i := 0 to FMU.XMLInfo.VarArrayLen -1 do
+      begin
+        FMU.VarArray[i] := p;
+        inc(p);
+      end;
+
+    FMU.InputCount := 0;
+    FMU.OutputCount := 0;
+    InputNames := '';
+    OutputNames := '';
+    for i := 0 to (Length(FMU.VarArray) - 1) do
+    begin
+      if (FMU.VarArray[i].InputFlag = input) and (FMU.VarArray[i].VarType <> Str) then
+      begin
+        FMU.InputCount := FMU.InputCount + 1;
+        InputNames := InputNames + FMU.VarArray[i].Name + ', ';
+      end;
+      if (FMU.VarArray[i].InputFlag = output) and (FMU.VarArray[i].VarType <> Str) then
+      begin
+        FMU.OutputCount := FMU.OutputCount + 1;
+        OutputNames := OutputNames + FMU.VarArray[i].Name + ', ';
+      end;
+    end; //for
+    if InputNames > '' then SetLength(InputNames,(Length(InputNames))-2);
+    if OutputNames > '' then SetLength(OutputNames,(Length(OutputNames))-2);
+
+    ParameterNames := '';
+    for i := 0 to (Length(FMU.VarArray) - 1) do
+      if FMU.VarArray[i].IsParameter then ParameterNames := ParameterNames + (FMU.VarArray[i].Name) + ', ';
+    if ParameterNames > '' then SetLength(ParameterNames,(Length(ParameterNames))-2);
+  end; // if not FMU.xmlPath
+end;  //EditBlock
+
 function TFMUBlock.Run (var at,h : RealType) : int8;
 var
-  InputValue : array of fmiReal;
-  OutputValue : fmiReal;
-  i, j : Integer;
+  InputValue, OutputValue : array of fmiReal;
+  Value : fmiReal;
+  PropNames: array of String;
+  i: Integer;
 begin
-
   //Задание значений входов
   SetLength(InputValue,FMU.InputCount);
   for i := 0 to (FMU.InputCount - 1) do InputValue[i] := U[i].Arr^[0];
@@ -465,11 +572,13 @@ begin
   if at>0 then
   begin
 
+    if not FMU.IsStarted then ErrorEvent(txt_FMUBlock_Start, msInfo, VisualObject);
+    FMU.IsStarted := true;
+
     //Проверка наступления события по времени
     FMU.TimeEvent := FMU.eventInfo.upcomingTimeEvent and (FMU.eventInfo.nextEventTime < at);
-    if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
+    //if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
 
-  
     //Установка значений переменных модели на шаге интегрирования
     Setlength(FMU.x,(FMU.nx+1));
     FMU.fmuFlag := FMUfunc.fmiGetContinuousStates(FMU.model_instance, FMU.x, FMU.nx);
@@ -543,7 +652,11 @@ begin
     if (FMU.nz > 0) then
     begin
       FMU.StateEvent := False;
-      FMU.StateEvent := (FMU.StateEvent or ((FMU.z[0]*FMU.pre_z[0]) < 0));
+      for i := 0 to (FMU.nz - 1) do
+      begin
+        FMU.StateEvent := (FMU.StateEvent or ((FMU.z[i]*FMU.pre_z[i]) < 0));
+        if FMU.StateEvent then break;
+      end;
       if FMU.StateEvent then
       begin
         FMU.StateEvent := not FMU.StateEvent;
@@ -580,62 +693,44 @@ begin
       
   end;  //if at>0
 
-  if (FMU.OutputCount > 0) then
+  SetLength(OutputValue,FMU.OutputCount);
+  GetOutputValue(FMU, FMUfunc, OutputValue);
+  for i := 0 to (FMU.OutputCount - 1) do Y[i].Arr^[0] := OutputValue[i];
+
+  if (PropCount > 0) then
   begin
-    j := 0;
-    for i := 1 to 5 do
-    begin
-      case i of
-        1: begin  
-          if (GetOutputValue(FMU, FMUfunc, PropName1, OutputValue) = fmiOk) then
-          begin
-            Y[j].Arr^[0] := OutputValue;
-            j := j + 1;
-          end;
-        end;
-        2: begin  
-          if (GetOutputValue(FMU, FMUfunc, PropName2, OutputValue) = fmiOk) then
-          begin
-            Y[j].Arr^[0] := OutputValue;
-            j := j + 1;
-          end;
-        end;
-        3: begin  
-          if (GetOutputValue(FMU, FMUfunc, PropName3, OutputValue) = fmiOk) then
-          begin
-            Y[j].Arr^[0] := OutputValue;
-            j := j + 1;
-          end;
-        end;
-        4: begin  
-          if (GetOutputValue(FMU, FMUfunc, PropName4, OutputValue) = fmiOk) then
-          begin
-            Y[j].Arr^[0] := OutputValue;
-            j := j + 1;
-          end;
-        end;
-        5: begin  
-          if (GetOutputValue(FMU, FMUfunc, PropName5, OutputValue) = fmiOk) then
-          begin
-            Y[j].Arr^[0] := OutputValue;
-            j := j + 1;
-          end;
-        end;
-      end; //case
-    end; //for
-  end; // if (FMU.OutputCount > 0)
+    SetLength(PropNames,5);
+    PropNames[0] := PropName1;
+    PropNames[1] := PropName2;
+    PropNames[2] := PropName3;
+    PropNames[3] := PropName4;
+    PropNames[4] := PropName5;
+    SetLength(PropNames,PropCount);
+    for i := 0 to (PropCount - 1) do
+      if (GetPropValue(FMU, FMUfunc, PropNames[i], Value) = fmiOk) then
+            Y[FMU.OutputCount + i].Arr^[0] := Value
+      else begin
+        ErrorEvent((txt_FMUBlock_WrongPropName_err + PropNames[i]), msError, VisualObject);
+        Result := r_Fail;
+        Exit;
+      end;
+  end; //(PropCount > 0)
 
   Result := r_Success;
 end;  //Run
 
 function TFMUBlock.Stop: int8;
 begin
+  FMU.IsStarted := false;
   FMU.fmuFlag := FMUfunc.fmiTerminate(FMU.model_instance);
   if (FMU.fmuFlag = fmiOk) then ErrorEvent(txt_FMUBlock_Terminate_Simulation, msInfo, VisualObject);
   FMUfunc.fmiFreeModelInstance(FMU.model_instance);
+  FreeLibrary(FMU.dll_Handle);
   //ErrorEvent(txt_FMUBlock_Free_Model, msInfo, VisualObject);
   Result := r_Success;
 end;  //Stop
 
 end.
+
+// xxx
 

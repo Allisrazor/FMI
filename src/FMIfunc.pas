@@ -3,7 +3,7 @@ unit FMIfunc;
 interface
 
 uses
-Windows, SysUtils;
+Windows, SysUtils, FMITypes;
 
 const
 //Задание костант для FMU
@@ -11,126 +11,6 @@ const
   fmiFalse = False;
 
 type
- //Стандартные типы данных в fmiModelTypes
-  fmiComponent = pointer;
-  fmiValueReference = Cardinal;
-  fmiReal = Double;
-  fmiInteger = Integer;
-  fmiBoolean = Boolean;
-  fmiString = pAnsiChar;
-  fmiPBoolean = ^fmiBoolean; //указатель на fmiBoolean
-  size_t = Cardinal;         //Стандартный тип из c++
-
-//Стандартные типы данных в fmiModelFunctions
-  fmiStatus = (fmiOk, fmiWarning, fmiDiscard, fmiError, fmiFatal);
-  fmiCallbackLogger = procedure (c : fmiComponent;
-                                 instanceName : fmiString;
-                                 status : fmiStatus;
-                                 category : fmiString;
-                                 Logmessage : fmiString);  cdecl; //изменено с message
-
-  fmiCallbackAllocateMemory = function (nobj : size_t; size : size_t) : pointer; cdecl;
-
-  fmiCallbackFreeMemory = procedure (obj : pointer); cdecl;
-
-  fmiCallbackFunctions = record
-    logger : fmiCallbackLogger;
-    allocateMemory : fmiCallbackAllocateMemory;
-    freeMemory : fmiCallbackFreeMemory;
-  end;
-
-  fmiEventInfo = record
-    iterationConverged : fmiBoolean;
-    stateValueReferencesChanged : fmiBoolean;
-    stateValuesChanged : fmiBoolean;
-    terminateSimulation : fmiBoolean;
-    upcomingTimeEvent : fmiBoolean;
-    nextEventTime : fmiReal;
-  end;
-
-  // --- Набор параметров из xml ---
-  TInputFlag = (Input, Output, None);         //Флаг, который показывает является ли переменная входом/выходом или нет
-
-  TRecVar = record                            //Тип, в котором описывается переменная типа fmiReal
-    IsParameter : boolean;
-    Name : pAnsiChar;
-    InputFlag : TInputFlag;
-  end;
-  TpRecVar = ^TRecVar;
-
-  TXMLInfo = record                           //Основной тип, который содержит данные из .xml
-    ModelIdentifier : pAnsiChar;              //Идентификатор модели
-    GUID : pAnsiChar;                         //GUID модели
-    NumberOfStates : fmiInteger;              //Количество переменных состояния
-    NumberOfEventIndicators : fmiInteger;     //Количество индикаторов события
-    RealArrayLen : integer;                   //Количество элементов в массиве описаний вещественных переменных
-    IntArrayLen : integer;                    //Количество элементов в массиве описаний целых переменных
-    BoolArrayLen : integer;                   //Количество элементов в массиве описаний булевских переменных
-    StringArrayLen : integer;                 //Количество элементов в массиве описаний строковых переменных
-    RealArray : TpRecVar;                     //Указатель на массив переменных типа fmiReal
-    IntArray : TpRecVar;                      //Указатель на массив переменных типа fmiInteger
-    BoolArray : TpRecVar;                     //Указатель на массив переменных типа fmiBoolean
-    StringArray : TpRecVar;                   //Указатель на массив переменных типа fmiString
-  end;
-  TpXMLInfo = ^TXMLInfo;
-
-  TArrRecVar = array of TpRecVar;             //Тип - динамический массив записей о переменных
-  // --- Набор параметров из xml ---
-
-  // --- Набор  параметров модели FMU ---
-  TFMU = packed record
-    dll_Handle : THandle;                     //Хэндл для .dll модели FMU
-    xmlPath : AnsiString;                     //Путь к .xml
-    p_xmlPath : pAnsiChar;                    //Указатель на путь к .xml
-    CallbackFunctions : fmiCallbackFunctions; //Создание переменной CallbackFunctions
-    model_instance : fmiComponent;            //Указатель на образец модели
-    loggingOn : fmiBoolean;                   //fmiTrue, если необходимо ведения log
-    fmuFlag : fmiStatus;                      //Флаг, возвращаемый функциями FMI
-    InputCount : integer;                     //Количество входов
-    OutputCount : integer;                    //Количество выходов
-
-    nx : size_t;                              //Количество переменных состояний (в т. ч. для вычисления производных) - из .xml
-    x : array of fmiReal;                     //Массив переменных состояния модели
-    der_x : array of fmiReal;                 //Массив производных модели
-    nz : size_t;                              //Количество индикаторов события - из .xml
-    z : array of fmiReal;                     //Массив текущих индикаторов события
-    pre_z : array of fmiReal;                 //Массив предыдущих индикаторов события
-
-    vr : array of fmiValueReference;          //Указатели всех вещественных параметров модели
-    r : array of fmiReal;                     //Массив всех вещественных параметров модели
-    nr : size_t;                              //Количество вещественных всех параметров модели
-
-    vb : array of fmiValueReference;          //Указатели всех булевских параметров модели
-    b : array of fmiBoolean;                  //Массив всех булевских параметров модели
-    nb : size_t;                              //Количество булевских всех параметров модели
-
-    vi : array of fmiValueReference;          //Указатели всех целых параметров модели
-    i : array of fmiInteger;                  //Массив всех целых параметров модели
-    ni : size_t;                              //Количество целых всех параметров модели
-
-    vs : array of fmiValueReference;          //Указатели всех строковых параметров модели
-    s : array of fmiString;                   //Массив всех строковых параметров модели
-    ns : size_t;                              //Количество строковых всех параметров модели
-
-    Tstart : fmiReal;                         //Начальное время интегрирования - из .xml, если там есть
-    Tend : fmiReal;                           //Конечное время интегрирования - из .xml, если там есть
-    toleranceControlled : fmiBoolean;         //True, если нужно контролировать шаг интегрирования
-    inst_name : AnsiString;                   //Имя модели - из .xml
-    GUID : AnsiString;                        //Идентификационный номер - из .xml
-    p_inst_name : pAnsiChar;                  //Указатель на имя модели
-    p_GUID : pAnsiChar;                       //Указатель на идентификационный номер
-    eventInfo : fmiEventInfo;                 //Запись значения текущего события
-    TimeEvent : fmiBoolean;
-    StepEvent : fmiBoolean;
-    StateEvent : fmiBoolean;
-    XMLInfo : TXMLInfo;                       //Запись основных данных из .xml
-    RealArray : TArrRecVar;                   //Массив описаний вещественных чисел
-    IntArray : TArrRecVar;                    //Массив описаний целых чисел
-    BoolArray : TArrRecVar;                   //Массив описаний булевских чисел
-    StringArray : TArrRecVar;                 //Массив описаний строковых чисел
-  end;
-  // --- Набор  параметров модели FMU ---
-
   // --- Набор функций FMU ---
 
   //Стандартные функции в fmiModelFunctions -- нужно посмотреть, какие параметры изменяются (var), а какие нет
@@ -278,10 +158,15 @@ procedure freeM(obj : pointer); cdecl;
 //Объявление Функции перевода статуса типа fmiStatus в строку
 function fmiStatusToString (Status : fmiStatus) : fmiString; cdecl;
 
-//Объявление функции получения значений для заданных выходов
-Function GetOutputValue(FMU : TFMU;
+//Объявление функции получения значений для выходов
+Function GetOutputValue(var FMU : TFMU;
                         FMUfunc : TFMUfunc;
-                        OutputName : string;
+                        var value : array of double) : fmiStatus;
+
+//Объявление функции получения значений для заданных свойств
+Function GetPropValue(var FMU : TFMU;
+                        FMUfunc : TFMUfunc;
+                        PropName : String;
                         var value : double) : fmiStatus;
 
 //Объяление функции установки значений для входов
@@ -325,196 +210,224 @@ end;
 
 //Описание Функции перевода статуса типа fmiStatus в строку
 function fmiStatusToString (Status : fmiStatus) : fmiString; cdecl;
-  begin
-    case status of
-      fmiOk: Result := 'Ok';
-      fmiWarning: Result := 'Warning';
-      fmiDiscard: Result := 'Discard';
-      fmiError: Result := 'Error';
-      fmiFatal: Result := 'Fatal';
-    end;
+begin
+  case status of
+    fmiOk: Result := 'Ok';
+    fmiWarning: Result := 'Warning';
+    fmiDiscard: Result := 'Discard';
+    fmiError: Result := 'Error';
+    fmiFatal: Result := 'Fatal';
   end;
+end;
 
-//Описание функции получения значений для заданных выходов
-Function GetOutputValue(FMU : TFMU;
+//Описание функции получения значений для выходов
+Function GetOutputValue(var FMU : TFMU;
                         FMUfunc : TFMUfunc;
-                        OutputName : string;
-                        var value : double) : fmiStatus;
-Type
-TValueFlag = (real, int, bool, none);
+                        var value : array of double) : fmiStatus;
 var
-vr : array of fmiValueReference;
+VR : array of fmiValueReference;
 RealVal : array of fmiReal;
 IntVal : array of fmiInteger;
 BoolVal : array of fmiBoolean;
-Eqv : boolean;
-i : integer;
+i, j : integer;
 status : fmiStatus;
-VF : TValueFlag;
+begin
+  j := 0;
+  if (FMU.OutputCount > 0) then
   begin
-    Eqv := false;
-    VF := none;
-
-    while not Eqv do
+    For i := 0 to (FMU.XMLInfo.VarArrayLen - 1) do
     begin
-      For i := 0 to (FMU.XMLInfo.RealArrayLen -1) do
+      if FMU.VarArray[i]^.InputFlag = Output then
       begin
-        if FMU.RealArray[i]^.name = OutputName then
-        begin
-          Eqv := true;
-          VF := real;
-          SetLength(vr,1);
-          vr[0] := i;
-          break;
-        end;
-      end;
+        case FMU.VarArray[i]^.VarType of
+          Real: begin
+            SetLength(RealVal, 2);
+            SetLength(VR, 2);
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            Status := FMUfunc.fmiGetReal(FMU.model_instance, VR, RealVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            Value[j] := RealVal[0];
+            inc(j);
+          end;  //Real
+          Int: begin
+            SetLength(IntVal, 2);
+            SetLength(VR, 2);
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            Status := FMUfunc.fmiGetInteger(FMU.model_instance, VR, IntVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            Value[j] := IntVal[0];
+            inc(j);
+          end;  //Int
+          Bool: begin
+            SetLength(BoolVal, 2);
+            SetLength(VR, 2);
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            Status := FMUfunc.fmiGetBoolean(FMU.model_instance, VR, BoolVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            if (BoolVal[0]) then Value[j] := 1
+            else Value[j] := 0;
+            inc(j);
+          end;  //Bool
+        end;  //case
+      end;  //if
+    end; //for
+  end; //If
 
-      For i := 0 to (FMU.XMLInfo.IntArrayLen -1) do
-      begin
-        if FMU.IntArray[i]^.name = OutputName then
-        begin
-          Eqv := true;
-          VF := int;
-          SetLength(vr,1);
-          vr[0] := i;
-          break;
-        end;
-      end;
+  Result := fmiOk;
 
-      For i := 0 to (FMU.XMLInfo.BoolArrayLen -1) do
-      begin
-        if FMU.BoolArray[i]^.name = OutputName then
-        begin
-          Eqv := true;
-          VF := bool;
-          SetLength(vr,1);
-          vr[0] := i;
-          break;
-        end;
-      end;
-
-      if (not Eqv) then
-      begin
-        Result := fmiWarning;  //если выход из функции -  это предупреждение, то все нормально, просто ошибка в вводе имени выхода
-        exit;
-      end;
-    end; //while
-
-    case VF of
-      real: begin
-        SetLength(RealVal, 2);
-        SetLength(vr, (length(vr) + 1));
-        Status := FMUfunc.fmiGetReal(FMU.model_instance, vr, RealVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        value := RealVal[0];
-      end; //real
-      int: begin
-        SetLength(IntVal, 2);
-        SetLength(vr, (length(vr) + 1));
-        Status := FMUfunc.fmiGetInteger(FMU.model_instance, vr, IntVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        value := IntVal[0];
-      end; //int
-      bool: begin
-        SetLength(BoolVal, 2);
-        SetLength(vr, (length(vr) + 1));
-        Status := FMUfunc.fmiGetBoolean(FMU.model_instance, vr, BoolVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        if BoolVal[0] then value := 1
-        else value := 0;
-      end; //bool
-    end; //case
-
-    Result := fmiOk;
-
-  end;//GetOutputValue
+end;//GetOutputValue
 
 //Описание функции установки значений для входов
 Function SetInputValue(var FMU : TFMU;
                        FMUfunc : TFMUfunc;
                        value : array of double) : fmiStatus;
 var
-RealVR : array of fmiValueReference;
-IntVR : array of fmiValueReference;
-BoolVR : array of fmiValueReference;
+VR : array of fmiValueReference;
 RealVal : array of fmiReal;
 IntVal : array of fmiInteger;
 BoolVal : array of fmiBoolean;
 i, j : integer;
 status : fmiStatus;
-  begin
+begin
   j := 0;
   if (FMU.InputCount > 0) then
   begin
-    For i := 0 to (FMU.XMLInfo.RealArrayLen -1) do
+    For i := 0 to (FMU.XMLInfo.VarArrayLen - 1) do
     begin
-      if FMU.RealArray[i]^.InputFlag = Input then
+      if FMU.VarArray[i]^.InputFlag = Input then
       begin
-        SetLength(RealVal, 2);
-        SetLength(RealVR, 2);
-        RealVal[0] := Value[j];
-        Status := FMUfunc.fmiSetReal(FMU.model_instance, RealVR, RealVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        inc(j);
-      end;
+        case FMU.VarArray[i]^.VarType of
+          Real: begin
+            SetLength(RealVal, 2);
+            SetLength(VR, 2);
+            RealVal[0] := Value[j];
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            Status := FMUfunc.fmiSetReal(FMU.model_instance, VR, RealVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            inc(j);
+          end;  //Real
+          Int: begin
+            SetLength(IntVal, 2);
+            SetLength(VR, 2);
+            IntVal[0] := round(Value[j]);
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            Status := FMUfunc.fmiSetInteger(FMU.model_instance, VR, IntVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            inc(j);
+          end;  //Int
+          Bool: begin
+            SetLength(BoolVal, 2);
+            SetLength(VR, 2);
+            VR[0] := FMU.VarArray[i]^.ValueRef;
+            if (Value[j] >= 0.6) then BoolVal[0] := True
+            else BoolVal[0] := false;
+            Status := FMUfunc.fmiSetBoolean(FMU.model_instance, VR, BoolVal);
+            if (Status <> fmiOk) then
+            begin
+              Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+              exit;
+            end;
+            inc(j);
+          end;  //Bool
+        end;  //case
+      end;  //if
     end; //for
-
-    For i := 0 to (FMU.XMLInfo.IntArrayLen -1) do
-    begin
-      if FMU.IntArray[i]^.InputFlag = Input then
-      begin
-        SetLength(IntVal, 2);
-        SetLength(IntVR, 2);
-        IntVal[0] := round(Value[j]);
-        Status := FMUfunc.fmiSetInteger(FMU.model_instance, IntVR, IntVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        inc(j);
-      end;
-    end; //for
-
-    For i := 0 to (FMU.XMLInfo.BoolArrayLen -1) do
-    begin
-      if FMU.BoolArray[i]^.InputFlag = Input then
-      begin
-        SetLength(BoolVal, 2);
-        SetLength(BoolVR, 2);
-        if (Value[j] >= 0.6) then BoolVal[0] := True
-        else BoolVal[0] := false;
-        Status := FMUfunc.fmiSetBoolean(FMU.model_instance, BoolVR, BoolVal);
-        if (Status <> fmiOk) then
-        begin
-          Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
-          exit;
-        end;
-        inc(j);
-      end;
-    end;
   end; //If
 
-    Result := fmiOk;
+  Result := fmiOk;
 
-  end;//SetInputValue
+end;//SetInputValue
 
+//Описание функции получения значений для заданных свойств
+Function GetPropValue(var FMU : TFMU;
+                        FMUfunc : TFMUfunc;
+                        PropName : String;
+                        var value : double) : fmiStatus;
+var
+VR : array of fmiValueReference;
+RealVal : array of fmiReal;
+IntVal : array of fmiInteger;
+BoolVal : array of fmiBoolean;
+i : integer;
+status : fmiStatus;
+begin
+  Status := fmiWarning;
+  For i := 0 to (FMU.XMLInfo.VarArrayLen - 1) do
+  begin
+    if FMU.VarArray[i]^.Name = PropName then
+    begin
+      case FMU.VarArray[i]^.VarType of
+        Real: begin
+          SetLength(RealVal, 2);
+          SetLength(VR, 2);
+          VR[0] := FMU.VarArray[i]^.ValueRef;
+          Status := FMUfunc.fmiGetReal(FMU.model_instance, VR, RealVal);
+          if (Status <> fmiOk) then
+          begin
+            Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+            exit;
+          end;
+          Value := RealVal[0];
+          Result := fmiOk;
+          exit;
+        end;  //Real
+        Int: begin
+          SetLength(IntVal, 2);
+          SetLength(VR, 2);
+          VR[0] := FMU.VarArray[i]^.ValueRef;
+          Status := FMUfunc.fmiGetInteger(FMU.model_instance, VR, IntVal);
+          if (Status <> fmiOk) then
+          begin
+            Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+            exit;
+          end;
+          Value := IntVal[0];
+          Result := fmiOk;
+          exit;
+        end;  //Int
+        Bool: begin
+          SetLength(BoolVal, 2);
+          SetLength(VR, 2);
+          VR[0] := FMU.VarArray[i]^.ValueRef;
+          Status := FMUfunc.fmiGetBoolean(FMU.model_instance, VR, BoolVal);
+          if (Status <> fmiOk) then
+          begin
+            Result := fmiError;  //если выход из функции -  это ошибка, то проблема с импортом из ModelInstance
+            exit;
+          end;
+          if (BoolVal[0]) then Value := 1
+          else Value := 0;
+          Result := fmiOk;
+          exit;
+        end;  //Bool
+      end;  //case
+    end;  //if
+  end; //for
+
+  if not (Status = fmiOk) then Result := fmiWarning
+  else Result := fmiOk;
+
+end;  //GetOutputValue
 
 initialization
  FillChar(DummyData,SizeOf(DummyData),byte(0));
