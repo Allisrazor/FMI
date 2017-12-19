@@ -133,6 +133,10 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+<<<<<<< HEAD
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+=======
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
@@ -206,23 +210,40 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+<<<<<<< HEAD
+                <DeployFile LocalName="Win32\Debug\FMI_lib.dll" Configuration="Debug" Class="ProjectOutput">
+=======
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="..\..\bin\FMI_lib.dll" Configuration="Debug" Class="ProjectOutput">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                     <Platform Name="Win32">
                         <RemoteName>FMI_lib.dll</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+<<<<<<< HEAD
+                <DeployFile LocalName="..\..\..\bin\FMI_lib.dll" Configuration="Debug" Class="ProjectOutput">
+=======
                 <DeployFile LocalName="..\..\..\bin\FMI_lib.dll" Configuration="Release" Class="ProjectOutput">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                     <Platform Name="Win32">
                         <RemoteName>FMI_lib.dll</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+<<<<<<< HEAD
+                <DeployFile LocalName="..\..\bin\FMI_lib.dll" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FMI_lib.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+=======
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
@@ -233,6 +254,7 @@
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -250,9 +272,29 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule"/>
+<<<<<<< HEAD
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule"/>
+                <DeployFile LocalName="..\..\..\bin\FMI_lib.dll" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FMI_lib.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+=======
                 <DeployFile LocalName="..\..\bin\FMI_lib.dll" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>FMI_lib.dll</RemoteName>
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -262,6 +304,26 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule"/>
+<<<<<<< HEAD
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule"/>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\bin\FMI_lib.dll" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FMI_lib.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+=======
                 <DeployFile LocalName="..\..\..\bin\FMI_lib.dll" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>FMI_lib.dll</RemoteName>
@@ -291,6 +353,7 @@
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXInfoPList">
@@ -458,6 +521,21 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+<<<<<<< HEAD
+                <DeployClass Name="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+=======
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\MacOS</RemoteDir>
@@ -479,14 +557,27 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSInfoPList">
                     <Platform Name="iOSDevice">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+<<<<<<< HEAD
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+=======
                 <DeployClass Name="iPad_Launch1024">
                     <Platform Name="iOSDevice">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
@@ -499,9 +590,20 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+<<<<<<< HEAD
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+=======
                 <DeployClass Name="Android_DefaultAppIcon">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable</RemoteDir>
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -516,11 +618,17 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+<<<<<<< HEAD
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+=======
                 <DeployClass Name="iPad_Launch768">
                     <Platform Name="iOSDevice">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -618,12 +726,32 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+<<<<<<< HEAD
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+=======
                 <DeployClass Name="ProjectUWPManifest">
                     <Platform Name="Win64">
+>>>>>>> ba6c29a64a26bc41d74572f9a5bb904dcc343a87
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
