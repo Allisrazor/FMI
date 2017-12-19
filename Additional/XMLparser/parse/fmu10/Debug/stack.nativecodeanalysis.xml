@@ -2,7 +2,7 @@
 <DEFECTS>
   <DEFECT>
     <SFA>
-      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
       <FILENAME>stack.c</FILENAME>
       <LINE>18</LINE>
       <COLUMN>13</COLUMN>
@@ -19,7 +19,7 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>17</LINE>
         <COLUMN>11</COLUMN>
@@ -31,7 +31,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>18</LINE>
         <COLUMN>13</COLUMN>
@@ -46,7 +46,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
       <FILENAME>stack.c</FILENAME>
       <LINE>36</LINE>
       <COLUMN>35</COLUMN>
@@ -60,7 +60,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
       <FILENAME>stack.c</FILENAME>
       <LINE>66</LINE>
       <COLUMN>12</COLUMN>
@@ -77,13 +77,13 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>60</LINE>
         <COLUMN>8</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>61</LINE>
         <COLUMN>11</COLUMN>
@@ -95,7 +95,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>62</LINE>
         <COLUMN>8</COLUMN>
@@ -107,31 +107,31 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>63</LINE>
         <COLUMN>10</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>63</LINE>
         <COLUMN>15</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>64</LINE>
         <COLUMN>17</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>63</LINE>
         <COLUMN>20</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>63</LINE>
         <COLUMN>15</COLUMN>
@@ -143,7 +143,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>66</LINE>
         <COLUMN>12</COLUMN>
@@ -158,7 +158,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+      <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
       <FILENAME>stack.c</FILENAME>
       <LINE>78</LINE>
       <COLUMN>17</COLUMN>
@@ -175,13 +175,13 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>73</LINE>
         <COLUMN>8</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>74</LINE>
         <COLUMN>11</COLUMN>
@@ -193,7 +193,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>75</LINE>
         <COLUMN>8</COLUMN>
@@ -205,19 +205,19 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>76</LINE>
         <COLUMN>10</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>77</LINE>
         <COLUMN>10</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>77</LINE>
         <COLUMN>15</COLUMN>
@@ -229,13 +229,13 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>78</LINE>
         <COLUMN>17</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>77</LINE>
         <COLUMN>24</COLUMN>
@@ -247,7 +247,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>77</LINE>
         <COLUMN>15</COLUMN>
@@ -259,7 +259,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>e:\для работы\parse\fmu10\src\shared\</FILEPATH>
+        <FILEPATH>e:\simintech(x64)\simintech64\source\mbty\fmi_lib\additional\xmlparser\parse\fmu10\src\shared\</FILEPATH>
         <FILENAME>stack.c</FILENAME>
         <LINE>78</LINE>
         <COLUMN>17</COLUMN>

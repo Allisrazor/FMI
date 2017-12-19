@@ -336,7 +336,7 @@ begin
     FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\' + FMUfunc.fmu_name + '.dll'));
   end else
   begin
-    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\win32\' + FMUfunc.fmu_name + '.dll'));
+    FMU.dll_Handle := Loadlibrary(pchar(GetCurrentDir + '\' + FMUfunc.fmu_name + '\binaries\' + WinVersion + '\' + FMUfunc.fmu_name + '.dll'));
   end;
   if (FMU.dll_Handle >= 32) then
   begin
@@ -577,7 +577,7 @@ begin
 
     //ѕроверка наступлени€ событи€ по времени
     FMU.TimeEvent := FMU.eventInfo.upcomingTimeEvent and (FMU.eventInfo.nextEventTime < at);
-    if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
+    //if FMU.TimeEvent then at := FMU.eventInfo.nextEventTime;
 
     //”становка значений переменных модели на шаге интегрировани€
     Setlength(FMU.x,(FMU.nx+1));
@@ -652,7 +652,11 @@ begin
     if (FMU.nz > 0) then
     begin
       FMU.StateEvent := False;
-      FMU.StateEvent := (FMU.StateEvent or ((FMU.z[0]*FMU.pre_z[0]) < 0));
+      for i := 0 to (FMU.nz - 1) do
+      begin
+        FMU.StateEvent := (FMU.StateEvent or ((FMU.z[i]*FMU.pre_z[i]) < 0));
+        if FMU.StateEvent then break;
+      end;
       if FMU.StateEvent then
       begin
         FMU.StateEvent := not FMU.StateEvent;
@@ -721,6 +725,7 @@ begin
   FMU.fmuFlag := FMUfunc.fmiTerminate(FMU.model_instance);
   if (FMU.fmuFlag = fmiOk) then ErrorEvent(txt_FMUBlock_Terminate_Simulation, msInfo, VisualObject);
   FMUfunc.fmiFreeModelInstance(FMU.model_instance);
+  FreeLibrary(FMU.dll_Handle);
   //ErrorEvent(txt_FMUBlock_Free_Model, msInfo, VisualObject);
   Result := r_Success;
 end;  //Stop
