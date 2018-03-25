@@ -1,0 +1,4 @@
+LIBRARY   FMI_Parser_XML
+EXPORTS  
+	XMLParse
+	XMLFree

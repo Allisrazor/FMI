@@ -1,4 +1,14 @@
+
+ //**************************************************************************//
+ // Данный исходный код является составной частью системы МВТУ-4             //
+ // Программист:        Тимофеев К.А.                                        //
+ //**************************************************************************//
+
 unit FMITypes;
+
+ //***************************************************************************//
+ //               Типы данных, которые используются библиотекой FMI           //
+ //***************************************************************************//
 
 interface
 
@@ -59,14 +69,14 @@ type
     VarType : TVarTypeFlag;
     ValueRef : fmiValueReference;
     IsParameter : boolean;
-    Name : pAnsiChar;
+    Name : pWideChar;
     InputFlag : TInputFlag;
   end;
   TpRecVar = ^TRecVar;
 
   TXMLInfo = record                           //Основной тип, который содержит данные из .xml
-    ModelIdentifier : pAnsiChar;              //Идентификатор модели
-    GUID : pAnsiChar;                         //GUID модели
+    ModelIdentifier : pWideChar;              //Идентификатор модели
+    GUID : pWideChar;                         //GUID модели
     NumberOfStates : fmiInteger;              //Количество переменных состояния
     NumberOfEventIndicators : fmiInteger;     //Количество индикаторов события
     VarArrayLen : integer;                    //Количество элементов в массиве описаний переменных
@@ -110,6 +120,7 @@ type
     p_xmlPath : pAnsiChar;                    //Указатель на путь к .xml
     XMLInfo : TXMLInfo;                       //Запись основных данных из .xml
     VarArray : TArrRecVar;                    //Массив описаний переменных
+    ModelDescription : pointer;               //Указатель на описание модели (для освобождения памяти в библиотеке FMI_Parser_XML)
   end;
   // --- Набор  параметров модели FMU ---
 

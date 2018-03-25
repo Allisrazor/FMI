@@ -59,7 +59,6 @@ type
     // --- Внутренние свойства блока ---
     function EditProp: int8;
     function Init: int8;
-    function Start: int8;
     function Run(var at,h : RealType): int8;
     function Stop: int8;
 
@@ -78,13 +77,13 @@ end;
 
 destructor TFMUBlock.Destroy;
 begin
+  if (FMU.ModelDescription <> nil) then XMLFree(@FMU.ModelDescription, @FMU.XMLInfo);
   inherited;
 end;
 
 procedure TFMUBlock.EditFunc;
 var
 Data : TEvalData;
-StringBuf : string;
 begin
   inherited;
   //Переписывается количество и имена входов
@@ -112,21 +111,10 @@ i : integer;
 begin
   Result:=0;
   case Action of
-    i_GetInit: Result := r_Success;
     i_HaveSpetialEditor: Result := EditProp;
-    i_GetCount: begin
-      for i := 0 to (FMU.InputCount - 1) do 
-      begin
-        cU[i] := 1;
-      end;
-      for i := 0 to (FMU.OutputCount - 1) do 
-      begin
-        cY[i] := 1;
-      end;
-    end;
   else
     Result := inherited InfoFunc(Action);
-  end
+  end;
 end; //InfoFunc
 
 function TFMUBlock.RunFunc;
@@ -249,9 +237,8 @@ end;  //ReadParam
 function TFMUBlock.Init: int8;
 var
 NameBuffer, DirBuffer : string;
-i : integer;
-p : TpRecVar;
-FileExistBool1, FileExistBool2 : boolean;
+PropNames: array of String;
+i, j : integer;
 begin
   Result := r_Success;
 
@@ -307,6 +294,28 @@ begin
     Exit;
   end;
 
+  if (PropCount > 0) then
+  begin
+    SetLength(PropNames,5);
+    PropNames[0] := PropName1;
+    PropNames[1] := PropName2;
+    PropNames[2] := PropName3;
+    PropNames[3] := PropName4;
+    PropNames[4] := PropName5;
+    SetLength(PropNames,PropCount);
+    for i := 0 to (PropCount - 1) do
+      begin
+        for j := 0 to (FMU.XMLInfo.VarArrayLen - 1) do
+          if FMU.VarArray[j]^.Name = PropNames[i] then break;
+        if j > (FMU.XMLInfo.VarArrayLen - 1) then
+        begin
+          ErrorEvent((txt_FMUBlock_WrongPropName_err + IntToStr(i+1)), msError, VisualObject);
+          Result := r_Fail;
+          Exit;
+        end;
+      end;
+  end; //(PropCount > 0)
+
   Result := r_Success;
   FMU.IsStarted := false;
   
@@ -316,8 +325,8 @@ begin
   FMU.nz := FMU.XMLInfo.NumberOfEventIndicators; //Количество индикаторов события - из .xml
   FMU.Tstart := 0;                               //??? Начальное время интегрирования - из .xml, если там есть
   FMU.toleranceControlled := fmiFalse;
-  FMU.p_inst_name := FMU.XMLInfo.ModelIdentifier;
-  FMU.p_GUID := FMU.XMLInfo.GUID;
+  FMU.p_inst_name := PAnsiChar(AnsiString(FMU.XMLInfo.ModelIdentifier));
+  FMU.p_GUID := PAnsiChar(AnsiString(FMU.XMLInfo.GUID));
   Setlength(FMU.x,FMU.nx);
   Setlength(FMU.der_x,FMU.nx);
   Setlength(FMU.z,FMU.nz);
@@ -443,14 +452,9 @@ begin
 
 end;  //Init
 
-function TFMUBlock.Start: int8;
-begin
-  Result := r_Success;
-end;  //Start
-
 function TFMUBlock.EditProp: int8;
 var
-NameBuffer, DirBuffer : string;
+NameBuffer : string;
 i : integer;
 p : TpRecVar;
 FileExistBool1, FileExistBool2 : boolean;
@@ -509,7 +513,8 @@ begin
   begin
     FMU.xmlPath := (GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml');
     FMU.p_xmlPath := pansichar(FMU.xmlPath);
-    XMLParse(@FMU.XMLInfo, FMU.p_xmlPath);
+    if (FMU.ModelDescription <> nil) then XMLFree(@FMU.ModelDescription, @FMU.XMLInfo);
+    XMLParse(@FMU.ModelDescription, @FMU.XMLInfo, FMU.p_xmlPath);
 
     //Запись данных о переменных
     SetLength(FMU.VarArray, FMU.XMLInfo.VarArrayLen);
@@ -542,7 +547,8 @@ begin
 
     ParameterNames := '';
     for i := 0 to (Length(FMU.VarArray) - 1) do
-      if FMU.VarArray[i].IsParameter then ParameterNames := ParameterNames + (FMU.VarArray[i].Name) + ', ';
+      if FMU.VarArray[i].IsParameter and (FMU.VarArray[i].VarType <> Str) then
+        ParameterNames := ParameterNames + (FMU.VarArray[i].Name) + ', ';
     if ParameterNames > '' then SetLength(ParameterNames,(Length(ParameterNames))-2);
   end; // if not FMU.xmlPath
 end;  //EditBlock
@@ -554,6 +560,8 @@ var
   PropNames: array of String;
   i: Integer;
 begin
+  Result := r_Success;
+
   //Задание значений входов
   SetLength(InputValue,FMU.InputCount);
   for i := 0 to (FMU.InputCount - 1) do InputValue[i] := U[i].Arr^[0];
@@ -710,27 +718,27 @@ begin
       if (GetPropValue(FMU, FMUfunc, PropNames[i], Value) = fmiOk) then
             Y[FMU.OutputCount + i].Arr^[0] := Value
       else begin
-        ErrorEvent((txt_FMUBlock_WrongPropName_err + PropNames[i]), msError, VisualObject);
+        ErrorEvent((txt_FMUBlock_WrongPropName_err + IntToStr(i+1)), msError, VisualObject);
         Result := r_Fail;
         Exit;
       end;
   end; //(PropCount > 0)
-
-  Result := r_Success;
 end;  //Run
 
 function TFMUBlock.Stop: int8;
 begin
   FMU.IsStarted := false;
-  FMU.fmuFlag := FMUfunc.fmiTerminate(FMU.model_instance);
-  if (FMU.fmuFlag = fmiOk) then ErrorEvent(txt_FMUBlock_Terminate_Simulation, msInfo, VisualObject);
-  FMUfunc.fmiFreeModelInstance(FMU.model_instance);
-  FreeLibrary(FMU.dll_Handle);
+  if FMU.model_instance <> nil then
+  begin
+    FMU.fmuFlag := FMUfunc.fmiTerminate(FMU.model_instance);
+    if (FMU.fmuFlag = fmiOk) then ErrorEvent(txt_FMUBlock_Terminate_Simulation, msInfo, VisualObject);
+    FMUfunc.fmiFreeModelInstance(FMU.model_instance);
+  end;
+  if FMU.dll_Handle > 32 then FreeLibrary(FMU.dll_Handle);
+
   //ErrorEvent(txt_FMUBlock_Free_Model, msInfo, VisualObject);
   Result := r_Success;
 end;  //Stop
 
 end.
-
-// xxx
 

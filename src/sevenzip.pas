@@ -882,15 +882,22 @@ type
     property OutArchive: IOutArchive read GetOutArchive;
   end;
 
+const
+{$IFDEF WIN64}
+  dll_name = '7z_x64.dll';
+{$ELSE}
+  dll_name = '7z.dll';
+{$ENDIF}
+
 function CreateInArchive(const classid: TGUID): I7zInArchive;
 begin
-  Result := T7zInArchive.Create('7z.dll');
+  Result := T7zInArchive.Create(dll_name);
   Result.ClassId := classid;
 end;
 
 function CreateOutArchive(const classid: TGUID): I7zOutArchive;
 begin
-  Result := T7zOutArchive.Create('7z.dll');
+  Result := T7zOutArchive.Create(dll_name);
   Result.ClassId := classid;
 end;
 

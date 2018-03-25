@@ -1,4 +1,15 @@
+
+ //**************************************************************************//
+ // Данный исходный код является составной частью системы МВТУ-4             //
+ // Программист:        Тимофеев К.А.                                        //
+ //**************************************************************************//
+
 unit LibTexts;
+
+ //**************************************************************************//
+ //                      Тексты ошибок и логи                                //
+ //                                                                          //
+ //**************************************************************************//
 
 interface
 
@@ -14,7 +25,7 @@ const
   txt_FMUBlock_Init_err = 'FMI. Ошибка инициализации';
   txt_FMUBlock_Set_Time_err = 'FMI. Ошибка установки времени в модели';
   txt_FMUBlock_Run_err = 'FMI. Ошбика на шаге интегрирования в модели';
-  txt_FMUBlock_WrongPropName_err = 'FMI. Пожалуйста, укажите существующее имя свойста: ';
+  txt_FMUBlock_WrongPropName_err = 'FMI. Пожалуйста, укажите существующее имя переменной выхода №';
 
   //Рабочие
   txt_FMUBlock_Start = 'FMI. Запущен расчет';
@@ -35,8 +46,7 @@ const
   txt_FMUBlock_Init_err = 'FMI. Initialization error';
   txt_FMUBlock_Set_Time_err = 'FMI. Setting time error';
   txt_FMUBlock_Run_err = 'FMI. Integration step error';
-  txt_FMUBlock_WrongPropName_err = 'FMI. Please, type existing name of property: '
-
+  txt_FMUBlock_WrongPropName_err = 'FMI. Please, type existing name of property №';
   //Рабочие
   txt_FMUBlock_Start = 'FMI. Evaluation began';
   txt_FMUBlock_Instantiate_good = 'FMI. Unit instantiated';

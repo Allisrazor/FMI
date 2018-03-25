@@ -37,17 +37,58 @@
 #include <stdio.h>
 #include <string.h> //strerror()
 #include "parse.h"
+#include <windows.h>
 
 void __iob_func(void) {}
 
-ModelDescription* md;
-
-DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath)
+const wchar_t * utf8_to_unicode(char *utf8_string)  //Функция перевода из UTF-8 в Юникод
 {
+	int err;
+	wchar_t * res;
+	int res_len = MultiByteToWideChar(
+		CP_UTF8,			// Code page
+		0,					// No flags
+		utf8_string,		// Multibyte characters string
+		-1,					// The string is NULL terminated
+		NULL,				// No buffer yet, allocate it later
+		0					// No buffer
+		);
+	if (res_len == 0)
+	{
+		printf("Failed to obtain utf8 string length\n");
+		return NULL;
+	}
+	res = calloc(sizeof(wchar_t), res_len);
+	if (res == NULL)
+	{
+		printf("Failed to allocate unicode string\n");
+		return NULL;
+	}
+	err = MultiByteToWideChar(
+		CP_UTF8,			// Code page
+		0,					// No flags
+		utf8_string,		// Multibyte characters string
+		-1,					// The string is NULL terminated
+		res,				// Output buffer
+		res_len				// buffer size
+		);
+	if (err == 0)
+	{
+		printf("Failed to convert to unicode\n");
+		free(res);
+		return NULL;
+	}
+	return res;
+}
+
+void XMLParse(void** MD, XMLInfo* XMLparsed, const char* xmlPath)
+{
+	ModelDescription* md;
 	md = parse(xmlPath);
 	ScalarVariable** vars = md->modelVariables;
-	XMLparsed->MI = getModelIdentifier(md);
-	XMLparsed->ModelGUID = getString(md, att_guid);
+
+	XMLparsed->MI = utf8_to_unicode(getModelIdentifier(md));
+	XMLparsed->ModelGUID = utf8_to_unicode(getString(md, att_guid));
 	XMLparsed->nx = getNumberOfStates(md);
 	XMLparsed->nz = getNumberOfEventIndicators(md);
 
@@ -59,17 +100,17 @@ DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath)
 		XMLparsed->nv = XMLparsed->nv + 1;
 	} //for
 
-	//Выделенеие памяти под массивы
+	//Выделение памяти под массивы
 	XMLparsed->pRecVar = (TRecVar*)calloc(XMLparsed->nv,sizeof(TRecVar));
 
 	//Задание массива описаний переменных модели
-
 	for (k = 0; vars[k]; k++) {
 		ScalarVariable* sv = vars[k];
 		
 		TRecVar SetVar = { Real, 0, "" , None, fmiFalse };
 
-		SetVar.Name = getName(sv);                               //Получение имени переменной
+		
+		SetVar.Name = utf8_to_unicode(getName(sv));              //Получение имени переменной
 
 		if (getCausality(sv) != enu_input) {                     //Проверка вход/выход или нет
 			if (getCausality(sv) != enu_output) {
@@ -103,5 +144,20 @@ DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath)
 		}
 		(XMLparsed->pRecVar[k]) = SetVar;
 	} //for
+	*MD = md;
+}
+
+void XMLFree(void** MD, XMLInfo* XMLparsed)
+{
+	ModelDescription* md = (ModelDescription*) *MD;
+	XMLparsed->MI = NULL;
+	XMLparsed->ModelGUID = NULL;
+	XMLparsed->nx = 0;
+	XMLparsed->nz = 0;
+	XMLparsed->nv = 0;
+	free(XMLparsed->pRecVar);
+	XMLparsed->pRecVar = NULL;
+	freeElement(md);
+	*MD = NULL;
 }
 

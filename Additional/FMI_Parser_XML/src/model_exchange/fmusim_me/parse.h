@@ -9,12 +9,6 @@
 #include "fmiModelTypes.h"
 #include "xml_parser.h"
 
-#ifdef _MSC_VER
-#define DllExport __declspec( dllexport )
-#else
-#define DllExport
-#endif
-
 typedef enum {
 	Input,
 	Output,
@@ -32,18 +26,20 @@ typedef struct {               //“ип, в котором описываетс€ переменна€ типа fmiR
 	TVarTypeFlag VarType;
     fmiValueReference ValueRef;
 	fmiBoolean IsParameter;
-	const char* Name;
+	const wchar_t* Name;
 	TInputFlag InputFlag;                    
 } TRecVar;
 
 typedef struct {
-	const char* MI;              //ModelIdentifier
-	const char* ModelGUID;       //GUID
-	int nx;                      //NumberOfStates
-	int nz;                      //NumberOfEventIndicators
-	int nv;                      // оличество описаний переменных
-	TRecVar* pRecVar;            //”казатель на массив описаний переменных 
+	const wchar_t* MI;              //ModelIdentifier
+	const wchar_t* ModelGUID;       //GUID
+	int nx;                         //NumberOfStates
+	int nz;                         //NumberOfEventIndicators
+	int nv;                         // оличество описаний переменных
+	TRecVar* pRecVar;               //”казатель на массив описаний переменных 
 } XMLInfo;
 
-DllExport void XMLParse(XMLInfo* XMLparsed, const char* xmlPath);
+void XMLParse(void** MD, XMLInfo* XMLparsed, const char* xmlPath);
+
+void XMLFree(void** MD, XMLInfo* XMLparsed);
 

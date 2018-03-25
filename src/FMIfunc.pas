@@ -1,4 +1,14 @@
+
+ //**************************************************************************//
+ // Данный исходный код является составной частью системы МВТУ-4             //
+ // Программист:        Тимофеев К.А.                                        //
+ //**************************************************************************//
+
 unit FMIfunc;
+
+ //***************************************************************************//
+ //               Функции FMI                                                 //
+ //***************************************************************************//
 
 interface
 
@@ -6,12 +16,12 @@ uses
 Windows, SysUtils, FMITypes;
 
 const
-//Задание костант для FMU
+//Задание костант для FMI
   fmiTrue = True;
   fmiFalse = False;
 
 type
-  // --- Набор функций FMU ---
+  // --- Набор функций FMI ---
 
   //Стандартные функции в fmiModelFunctions -- нужно посмотреть, какие параметры изменяются (var), а какие нет
   TfmiGetModelTypesPlatform = function() : fmiString; cdecl;
@@ -144,7 +154,7 @@ type
   // --- Набор функций FMU ---
 
 
-//Объявление функций callback в первом приближении (???в дальнейшем можно заменить)
+//Объявление функций callback
 procedure CallbackLogger(c : fmiComponent;
                          instanceName : fmiString;
                          status : fmiStatus;
@@ -176,14 +186,14 @@ Function SetInputValue(var FMU : TFMU;
 
 implementation
 
-//Описание функций callback в первом приближении (в дальнейшем можно заменить)
+//Описание функций callback
 procedure CallbackLogger      (c : fmiComponent;
                                instanceName : fmiString;
                                status : fmiStatus;
                                category : fmiString;
-                               Logmessage : fmiString);  cdecl; //изменено с message
+                               Logmessage : fmiString);  cdecl;
   begin
-    Logmessage := Logmessage;   //??? Что-то нужно придумать с логгером
+    Logmessage := Logmessage;
   end;
 
 
@@ -200,7 +210,7 @@ begin
       Result := @DummyData;
 end;
 
-procedure freeM (obj : pointer); cdecl;   //??? Она не работает, если в качестве параметра используется один и тот же указатель во второй раз
+procedure freeM (obj : pointer); cdecl;
 begin
     if (not (obj = nil)) and (obj <> @DummyData) then
     begin
