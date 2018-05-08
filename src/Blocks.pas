@@ -88,6 +88,7 @@ begin
   inherited;
   //Переписывается количество и имена входов
   Data := TEvalData(FindVar(Props,'InputCount'));
+  if Data.StrValue = '' then Data.StrValue := '0';
   if (Data <> nil) and not (StrToInt(Data.StrValue) = FMU.InputCount)  then
   begin
     SetPortCount(VisualObject,0);
@@ -97,6 +98,7 @@ begin
 
   //Переписывается количество и имена выходов
   Data := TEvalData(FindVar(Props,'OutputCount'));
+  if Data.StrValue = '' then Data.StrValue := '0';
   if (Data <> nil) and not (StrToInt(Data.StrValue) = FMU.OutputCount)  then
   begin
     Data.StrValue := IntToStr(FMU.OutputCount);
@@ -253,10 +255,11 @@ begin
   begin
     NameBuffer := ExtractFileName(FMUAdress);
     setlength(NameBuffer, (length(NameBuffer)-4));
-    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
-      NameBuffer + '.dll') then
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\' +
+      WinVersion + '\' + NameBuffer + '.dll') then
     begin
-      DirBuffer := GetCurrentDir + '\' + NameBuffer + '\binaries\win32\';
+      DirBuffer := GetCurrentDir + '\' + NameBuffer + '\binaries\' +
+      WinVersion + '\';
       ErrorEvent((ExtractFileName(FMUAdress) + txt_FMUBlock_File_exists_err +
         DirBuffer + '. ' + txt_FMUBlock_ChoseRight_err), msError, VisualObject);
       Result := r_Fail;
@@ -471,8 +474,8 @@ begin
   begin
     NameBuffer := ExtractFileName(FMUAdress);
     setlength(NameBuffer, (length(NameBuffer)-4));
-    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
-      NameBuffer + '.dll') then
+    if not FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\' + WinVersion +
+      '\' + NameBuffer + '.dll') then
     begin
       Result := r_Fail;
       Exit;
@@ -495,8 +498,8 @@ begin
     NameBuffer := ExtractFileName(FMUAdress);
     setlength(NameBuffer, (length(NameBuffer)-4));
     FileExistBool1 := FileExists(GetCurrentDir + '\' + NameBuffer + '\modelDescription.xml');
-    FileExistBool2 := FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\win32\' +
-      NameBuffer + '.dll');
+    FileExistBool2 := FileExists(GetCurrentDir + '\' + NameBuffer + '\binaries\' +
+      WinVersion + '\' + NameBuffer + '.dll');
     if not (FileExistBool1 and FileExistBool2) then
     begin
       with CreateInArchive(CLSID_CFormatZip) do
@@ -654,6 +657,18 @@ begin
       ErrorEvent(txt_FMUBlock_Run_err, msError, VisualObject);
       Result := r_Fail;
       Exit;
+    end;
+
+    //Событие, при выполнении шага интегрирования
+    if FMU.StepEvent then
+    begin
+      FMU.fmuFlag := FMUfunc.fmiEventUpdate(FMU.model_instance, FMU.StateEvent, FMU.eventInfo);
+      if (FMU.fmuFlag <> fmiOk) then
+      begin
+        ErrorEvent(txt_FMUBlock_Run_err, msError, VisualObject);
+        Result := r_Fail;
+        Exit;
+      end;
     end;
 
     //Событие, при выполнения условия индикатора события
